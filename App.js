@@ -6,19 +6,31 @@ import HomeComponent from './src/components/homeComponent';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import LocationComponent from './src/components/locationComponent';
 import 'react-native-gesture-handler';
+import MapViews from './src/views/MapView';
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
     return (
-        <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Home">
-                <Drawer.Screen name="Home" component={HomeComponent} />
-                <Drawer.Screen
-                    name="LocationComponent"
-                    component={LocationComponent}
-                />
-            </Drawer.Navigator>
-        </NavigationContainer>
+            <NavigationContainer>
+                <Drawer.Navigator>
+                    <Drawer.Screen
+                        screenOptions={{
+                            drawerStyle: {
+                                backgroundColor: '#c6cbef',
+                                width: 240,
+                            },
+                        }}
+                        name="Map"
+                        component={MapViews}
+                        options={{ headerTransparent: true}}
+                    />
+                    <Drawer.Screen name="Home" component={HomeComponent} />
+                    <Drawer.Screen
+                        name="LocationComponent"
+                        component={LocationComponent}
+                    />
+                </Drawer.Navigator>
+            </NavigationContainer>
     );
 }
